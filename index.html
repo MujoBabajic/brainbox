@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Game</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/x-icon" href="pictures/qMarkIcon.png" />
+  </head>
+
+  <header>
+    <h1 id="main-header">The Quiz Game</h1>
+  </header>
+
+  <body>
+    <!-- START MENU ELEMENTS-->
+
+    <div id="start-menu-container">
+      <div id="nickname-div">
+        <label for="nickname-input">Enter your nickname here:</label>
+        <br />
+        <input
+          list="nicknames-list"
+          type="text"
+          id="nickname-input"
+          autocomplete="off"
+        />
+        <datalist id="nicknames-list"></datalist>
+      </div>
+      <br />
+      <div id="num-and-difficulty-container">
+        <div id="number-of-questions-div">
+          <label for="number-of-questions-input"
+            >Enter the number of questions:</label
+          >
+          <br />
+          <input
+            type="number"
+            id="number-of-questions-input"
+            min="1"
+            max="50"
+            placeholder="5"
+            onclick="placeholder=''"
+            onblur="placeholder=5"
+          />
+        </div>
+
+        <div id="difficulty-div">
+          <label for="difficulty-input"
+            >Choose the<br />
+            difficulty:</label
+          >
+          <br />
+          <select name="difficulty" id="difficulty-input">
+            <option value="random">random</option>
+            <option value="easy">easy</option>
+            <option value="medium">medium</option>
+            <option value="hard">hard</option>
+          </select>
+        </div>
+      </div>
+      <br />
+
+      <div id="categories-div">
+        <h3 id="categories-header">Choose the categories:</h3>
+
+        <div class="category-container">
+          <label for="arts-literature">Arts & Literature</label>
+          <input
+            type="checkbox"
+            id="arts-literature"
+            value="arts_and_literature"
+            class="category-checkbox"
+          />
+        </div>
+
+        <div class="category-container">
+          <label for="film-tv">Film & TV</label>
+          <input
+            type="checkbox"
+            id="film-tv"
+            value="film_and_tv"
+            class="category-checkbox"
+          />
+        </div>
+
+        <div class="category-container">
+          <label for="food-drink">Food & Drink</label>
+          <input
+            type="checkbox"
+            id="food-drink"
+            value="food_and_drink"
+            class="category-checkbox"
+          />
+        </div>
+
+        <div class="category-container">
+          <label for="general-knowledge">General Knowledge</label>
+          <input
+            type="checkbox"
+            id="general-knowledge"
+            value="general_knowledge"
+            class="category-checkbox"
+          />
+        </div>
+
+        <div class="category-container">
+          <label for="geography">Geography</label>
+          <input
+            type="checkbox"
+            id="geography"
+            value="geography"
+            class="category-checkbox"
+          />
+        </div>
+
+        <div class="category-container">
+          <label for="history">History</label>
+          <input
+            type="checkbox"
+            id="history"
+            value="history"
+            class="category-checkbox"
+          />
+        </div>
+
+        <div class="category-container">
+          <label for="music">Music</label>
+          <input
+            type="checkbox"
+            id="music"
+            value="music"
+            class="category-checkbox"
+          />
+        </div>
+
+        <div class="category-container">
+          <label for="science">Science</label>
+          <input
+            type="checkbox"
+            id="science"
+            value="science"
+            class="category-checkbox"
+          />
+        </div>
+
+        <div class="category-container">
+          <label for="society-culture">Society & Culture</label>
+          <input
+            type="checkbox"
+            id="society-culture"
+            value="society_and_culture"
+            class="category-checkbox"
+          />
+        </div>
+
+        <div class="category-container">
+          <label for="sport-leisure">Sport & Leisure</label>
+          <input
+            type="checkbox"
+            id="sport-leisure"
+            value="sport_and_leisure"
+            class="category-checkbox"
+          />
+        </div>
+      </div>
+
+      <br />
+
+      <div id="challenger-mode-div">
+        <label for="challenger-mode">Challenger mode</label>
+        <input type="checkbox" id="challenger-mode" />
+      </div>
+      <br />
+
+      <button id="start-button">START</button>
+    </div>
+
+    <!-- QUIZ ACTIVE ELEMENTS-->
+
+    <div id="quiz-container" style="display: none">
+      <div id="question-div"></div>
+
+      <div id="question-category"></div>
+
+      <div id="answers-container">
+        <button class="answers" id="answerA"></button>
+        <button class="answers" id="answerB"></button>
+        <button class="answers" id="answerC"></button>
+        <button class="answers" id="answerD"></button>
+      </div>
+
+      <div id="score-and-timer-container">
+        <span id="score-div"></span>
+        <span id="timer-div"></span>
+      </div>
+    </div>
+
+    <!-- GAME OVER ELEMENTS-->
+
+    <div id="game-finished-container" style="display: none">
+      <h2 id="end-message">Thanks for playing</h2>
+      <h4 id="final-score">Final score:</h4>
+      <h4 id="final-time">Time:</h4>
+      <button id="play-again-button" onclick="location.reload()">
+        PLAY AGAIN
+      </button>
+    </div>
+
+    <!-- ERROR MESSAGE ELEMENTS-->
+
+    <div id="error-message-container" style="display: none">
+      <h2 id="error-header">Error</h2>
+      <h4 id="error-description">
+        Error while loading questions.<br />
+        Check your internet connection.
+      </h4>
+      <button id="try-again-button" onclick="location.reload()">
+        TRY AGAIN
+      </button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

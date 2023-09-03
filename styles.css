@@ -1,0 +1,330 @@
+/* Variables for colors */
+
+:root {
+  --headerColor: rgb(188, 106, 255);
+  --containerTextColor: rgb(174, 102, 241);
+  --containerBackgroundColor: rgb(63, 24, 126);
+  --containerBorderColor: solid rgb(96, 23, 192);
+  --containerBoxShadow: 0 0 5px #8316ff, 0 0 5px #b248f0, 0 0 5px;
+  --initButtonBackgroundColor: blueviolet;
+  --initButtonBackgroundColorHover: rgb(156, 82, 224);
+  --initButtonBorderColor: solid #2b064e;
+  --answersButtonBackgroundColor: rgb(147, 71, 218);
+  --answersButtonBackgroundColorHover: rgb(156, 82, 224);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Start menu setup */
+
+body {
+  background-color: gray;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-image: url(pictures/bgImg.png);
+  background-attachment: fixed;
+  background-size: cover;
+  overflow-y: scroll;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+header {
+  text-align: center;
+  font-size: 25px;
+  margin: 10px 0 20px 0;
+  color: rgb(188, 106, 255);
+  text-shadow: 0 0 5px #8316ff, 0 0 5px #b248f0, 0 0 5px;
+  user-select: none;
+}
+
+#start-menu-container {
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in forwards;
+  padding: 10px;
+  background-color: var(--containerBackgroundColor);
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  border: var(--containerBorderColor);
+  box-shadow: var(--containerBoxShadow);
+  border-radius: 10px;
+  color: var(--containerTextColor);
+}
+
+#nickname-div,
+#number-of-questions-div,
+#difficulty-div,
+h3 {
+  text-align: center;
+}
+
+#nickname-input {
+  height: 30px;
+  font-size: 20px;
+  width: 150px;
+  margin: 7px 0 7px 0;
+  padding: 3px;
+}
+
+#categories-div {
+  width: 55%;
+}
+
+input,
+select {
+  background-color: rgb(134, 78, 236);
+  border-radius: 5px;
+}
+
+input[type="checkbox"] {
+  accent-color: rgb(168, 48, 168); /* Change this to your desired color */
+}
+
+#num-and-difficulty-container {
+  display: flex;
+}
+
+#difficulty-div,
+#number-of-questions-div {
+  width: 50%;
+}
+#number-of-questions-input {
+  font-size: 20px;
+  width: 100px;
+  height: 35px;
+  margin: 7px 0 7px 0;
+  padding: 3px;
+}
+
+#number-of-questions-input::-webkit-inner-spin-button,
+#number-of-questions-input::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+#number-of-questions-input::placeholder {
+  color: #43186b;
+}
+
+.category-container {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  font-size: 15px;
+  margin: auto;
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+.category-container label:hover {
+  background-color: #643896;
+}
+
+#challenger-mode-div {
+  display: flex;
+  justify-content: space-between;
+  width: 35%;
+  text-align: center;
+}
+#challenger-mode-div label:hover {
+  background-color: #643896;
+}
+
+#start-button {
+  background-color: var(--initButtonBackgroundColor);
+  font-size: 20px;
+  border: var(--initButtonBorderColor);
+  border-radius: 7%;
+  width: 100px;
+  height: 50px;
+  font-weight: bold;
+}
+
+#start-button:hover {
+  background-color: var(--initButtonBackgroundColorHover);
+  cursor: pointer;
+}
+
+#difficulty-input {
+  width: 100px;
+  height: 35px;
+  font-size: 20px;
+  margin: 7px 0 7px 0;
+  border-radius: 5px;
+}
+
+/* Quiz container setup */
+
+#quiz-container {
+  padding: 10px;
+  background-color: var(--containerBackgroundColor);
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  border: var(--containerBorderColor);
+  box-shadow: var(--containerBoxShadow);
+  border-radius: 10px;
+  color: var(--containerTextColor);
+}
+
+#question-div {
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+
+#question-category {
+  margin-bottom: 20px;
+  color: #8652b6;
+  text-align: center;
+}
+
+#answers-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  gap: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.answers {
+  width: 220px;
+  height: 75px;
+  background-color: var(--answersButtonBackgroundColor);
+  border-radius: 5%;
+  font-size: 17px;
+}
+.answers:hover {
+  background-color: var(--answersButtonBackgroundColorHover);
+  cursor: pointer;
+}
+
+#score-and-timer-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10px 10px 10px;
+}
+
+/* Game finished container setup */
+
+#game-finished-container {
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in forwards;
+  padding: 10px;
+  background-color: var(--containerBackgroundColor);
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  border: var(--containerBorderColor);
+  box-shadow: var(--containerBoxShadow);
+  border-radius: 10px;
+  color: var(--containerTextColor);
+  text-align: center;
+}
+
+#end-message {
+  margin-bottom: 20px;
+}
+
+#final-score {
+  margin-bottom: 20px;
+}
+
+#final-time {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#play-again-button {
+  background-color: var(--initButtonBackgroundColor);
+  font-size: 20px;
+  border: var(--initButtonBorderColor);
+  border-radius: 7%;
+  width: 140px;
+  height: 50px;
+  font-weight: bold;
+}
+
+#play-again-button:hover {
+  background-color: var(--initButtonBackgroundColorHover);
+  cursor: pointer;
+}
+
+/* Error message setup */
+
+#error-message-container {
+  padding: 10px;
+  background-color: var(--containerBackgroundColor);
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  border: var(--containerBorderColor);
+  box-shadow: var(--containerBoxShadow);
+  border-radius: 10px;
+  color: var(--containerTextColor);
+  text-align: center;
+}
+
+#error-header {
+  margin-bottom: 20px;
+}
+
+#error-description {
+  margin-bottom: 20px;
+}
+
+#try-again-button {
+  background-color: var(--initButtonBackgroundColor);
+  font-size: 20px;
+  border: var(--initButtonBorderColor);
+  border-radius: 7%;
+  width: 130px;
+  height: 50px;
+  font-weight: bold;
+}
+
+#try-again-button:hover {
+  background-color: var(--initButtonBackgroundColorHover);
+  cursor: pointer;
+}
+
+/* Scrollbar setup */
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #7317a8;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #2b064e;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #8b46da;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #f1f1f1;
+}
