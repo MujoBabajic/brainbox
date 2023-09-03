@@ -164,8 +164,6 @@ function displayNextQuestion() {
 }
 
 function checkAnswer() {
-  console.log(questionsArray[INDEX_OF_QUESTION].correctAnswer);
-
   answerA.addEventListener("click", clickAnswer, { once: true });
   answerB.addEventListener("click", clickAnswer, { once: true });
   answerC.addEventListener("click", clickAnswer, { once: true });
@@ -222,7 +220,6 @@ function startMainTimer() {
 
 function updateMainTimer() {
   MAIN_TIMER_SECONDS++;
-  console.log(MAIN_TIMER_SECONDS);
 }
 
 function stopMainTimer() {
