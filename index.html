@@ -35,14 +35,13 @@
           >
           <br />
           <input
-            type="number"
+            type="range"
             id="number-of-questions-input"
             min="1"
             max="50"
-            placeholder="5"
-            onclick="placeholder=''"
-            onblur="placeholder=5"
+            value="5"
           />
+          <p id="slider-value">5</p>
         </div>
 
         <div id="difficulty-div">
@@ -200,8 +199,9 @@
 
     <div id="game-finished-container" style="display: none">
       <h2 id="end-message">Thanks for playing</h2>
-      <h4 id="final-score">Final score:</h4>
-      <h4 id="final-time">Time:</h4>
+      <img id="end-image" src="pictures/completedImg.png" alt="completedImg" />
+      <h4 id="final-score"></h4>
+      <h4 id="final-time"></h4>
       <button id="play-again-button" onclick="location.reload()">
         PLAY AGAIN
       </button>
@@ -211,6 +211,7 @@
 
     <div id="error-message-container" style="display: none">
       <h2 id="error-header">Error</h2>
+      <img id="error-image" src="pictures/errorImg.png" alt="" />
       <h4 id="error-description">
         Error while loading questions.<br />
         Check your internet connection.

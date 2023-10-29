@@ -22,7 +22,6 @@
 /* Start menu setup */
 
 body {
-  background-color: gray;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-image: url(pictures/bgImg.png);
   background-attachment: fixed;
@@ -73,7 +72,7 @@ h3 {
 
 #nickname-input {
   height: 30px;
-  font-size: 20px;
+  font-size: 16px;
   width: 150px;
   margin: 7px 0 7px 0;
   padding: 3px;
@@ -90,7 +89,7 @@ select {
 }
 
 input[type="checkbox"] {
-  accent-color: rgb(168, 48, 168); /* Change this to your desired color */
+  accent-color: rgb(168, 48, 168);
 }
 
 #num-and-difficulty-container {
@@ -102,20 +101,37 @@ input[type="checkbox"] {
   width: 50%;
 }
 #number-of-questions-input {
-  font-size: 20px;
-  width: 100px;
-  height: 35px;
-  margin: 7px 0 7px 0;
-  padding: 3px;
+  height: 20px;
+  margin: 5px 0 0 0;
+  width: 135px;
 }
 
-#number-of-questions-input::-webkit-inner-spin-button,
-#number-of-questions-input::-webkit-outer-spin-button {
-  appearance: none;
-  margin: 0;
+#number-of-questions-input::-webkit-slider-runnable-track {
+  background-color: rgb(134, 78, 236);
+  border-radius: 5px;
 }
-#number-of-questions-input::placeholder {
-  color: #43186b;
+
+#number-of-questions-input::-webkit-slider-thumb {
+  /*-webkit-appearance: none;
+  appearance: none;
+  width: 23px;
+  height: 24px;
+  border: 0;
+  background: url(pictures/sliderThumb.png);
+  */
+  cursor: pointer;
+}
+
+#slider-value {
+  font-size: 13px;
+}
+
+#difficulty-input {
+  width: 100px;
+  height: 35px;
+  font-size: 16px;
+  margin: 7px 0 7px 0;
+  border-radius: 5px;
 }
 
 .category-container {
@@ -130,6 +146,7 @@ input[type="checkbox"] {
 
 .category-container label:hover {
   background-color: #643896;
+  padding: 0 3px 0 3px;
 }
 
 #challenger-mode-div {
@@ -138,6 +155,7 @@ input[type="checkbox"] {
   width: 35%;
   text-align: center;
 }
+
 #challenger-mode-div label:hover {
   background-color: #643896;
 }
@@ -146,7 +164,7 @@ input[type="checkbox"] {
   background-color: var(--initButtonBackgroundColor);
   font-size: 20px;
   border: var(--initButtonBorderColor);
-  border-radius: 7%;
+  border-radius: 5%;
   width: 100px;
   height: 50px;
   font-weight: bold;
@@ -155,14 +173,6 @@ input[type="checkbox"] {
 #start-button:hover {
   background-color: var(--initButtonBackgroundColorHover);
   cursor: pointer;
-}
-
-#difficulty-input {
-  width: 100px;
-  height: 35px;
-  font-size: 20px;
-  margin: 7px 0 7px 0;
-  border-radius: 5px;
 }
 
 /* Quiz container setup */
@@ -240,7 +250,12 @@ input[type="checkbox"] {
 }
 
 #end-message {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+#end-image {
+  width: 150px;
+  height: 150px;
 }
 
 #final-score {
@@ -256,7 +271,7 @@ input[type="checkbox"] {
   background-color: var(--initButtonBackgroundColor);
   font-size: 20px;
   border: var(--initButtonBorderColor);
-  border-radius: 7%;
+  border-radius: 5%;
   width: 140px;
   height: 50px;
   font-weight: bold;
@@ -285,7 +300,12 @@ input[type="checkbox"] {
 }
 
 #error-header {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+#error-image {
+  width: 150px;
+  height: 140px;
 }
 
 #error-description {
@@ -296,7 +316,7 @@ input[type="checkbox"] {
   background-color: var(--initButtonBackgroundColor);
   font-size: 20px;
   border: var(--initButtonBorderColor);
-  border-radius: 7%;
+  border-radius: 5%;
   width: 130px;
   height: 50px;
   font-weight: bold;

@@ -6,6 +6,7 @@ const nicknamesList = document.querySelector("#nicknames-list");
 const numberOfQuestionsInput = document.querySelector(
   "#number-of-questions-input"
 );
+const numberOfQuestionsInputDisplay = document.querySelector("#slider-value");
 const difficultyInput = document.querySelector("#difficulty-input");
 const challengerMode = document.querySelector("#challenger-mode");
 const startButton = document.querySelector("#start-button");
@@ -58,10 +59,6 @@ async function startQuiz() {
 
   let numberOfQuestions = numberOfQuestionsInput.value;
 
-  if (numberOfQuestions == "") {
-    numberOfQuestions = numberOfQuestionsInput.placeholder;
-  }
-
   NUMBER_OF_QUESTIONS = numberOfQuestions;
 
   let difficulty = difficultyInput.value;
@@ -70,21 +67,20 @@ async function startQuiz() {
     ".category-checkbox:checked"
   );
   const checkedCategoriesArr = [];
-  checkedCheckboxes.forEach(function (checkbox) {
+  checkedCheckboxes.forEach((checkbox) => {
     checkedCategoriesArr.push(checkbox.value);
   });
 
   if (difficulty != "random") {
     if (checkedCategoriesArr.length > 0) {
-      url += "categories=" + checkedCategoriesArr.join(",");
+      url += `categories=${checkedCategoriesArr.join(",")}`;
     }
-    url += "&limit=" + numberOfQuestions;
-    url += "&difficulty=" + difficulty;
+    url += `&limit=${numberOfQuestions}&difficulty=${difficulty}`;
   } else {
     if (checkedCategoriesArr.length > 0) {
-      url += "categories=" + checkedCategoriesArr.join(",");
+      url += `categories=${checkedCategoriesArr.join(",")}`;
     }
-    url += "&limit=" + numberOfQuestions;
+    url += `&limit=${numberOfQuestions}`;
   }
 
   //Fetching data and setting the questionsArray
@@ -93,6 +89,7 @@ async function startQuiz() {
     data = await response.json();
     questionsArray = data;
   } catch (error) {
+    console.log("ERROR", error);
     document.body.removeChild(quizContainer);
     displayErrorMessage();
   }
@@ -106,7 +103,6 @@ async function startQuiz() {
   startMenuContainer.style.display = "none";
   quizContainer.style.display = "block";
 
-  updateDatalistWithNicknames();
   saveNickname();
 
   displayQuestionAndAnswers();
@@ -191,7 +187,7 @@ function clickAnswer() {
   timerAudio.pause();
   timerAudio.currentTime = 0;
 
-  setTimeout(function () {
+  setTimeout(() => {
     MAIN_TIMER_SECONDS -= 2;
     displayNextQuestion();
   }, 2000);
@@ -204,7 +200,7 @@ function displayGameOverScreen() {
   gameFinishedContainer.style.display = "block";
 
   finalScore.innerText = `Final Score: ${SCORE_COUNTER}/${NUMBER_OF_QUESTIONS}`;
-  finalTime.innerText = `Total time: ${MAIN_TIMER_SECONDS} seconds`;
+  finalTime.innerText = `Total Time: ${MAIN_TIMER_SECONDS} seconds`;
 }
 
 function displayErrorMessage() {
@@ -250,7 +246,7 @@ function updateQuestionCountdown() {
       }
     });
 
-    setTimeout(function () {
+    setTimeout(() => {
       MAIN_TIMER_SECONDS -= 2;
       displayNextQuestion();
     }, 2000);
@@ -274,24 +270,13 @@ function stopQuestionCountdown() {
 }
 
 // MANAGING PREVIOUS NICKNAMES
-savedNicknames.forEach((value) => {
-  const option = document.createElement("option");
-  option.value = value;
-  nicknamesList.appendChild(option);
-});
-
-function updateDatalistWithNicknames() {
-  const inputValue = nicknameInput.value.toLowerCase();
-  const filteredValues = savedNicknames.filter((value) =>
-    value.toLowerCase().startsWith(inputValue)
-  );
-
-  filteredValues.forEach((value) => {
+(function updateDatalistAndShowNicknames() {
+  savedNicknames.forEach((value) => {
     const option = document.createElement("option");
     option.value = value;
     nicknamesList.appendChild(option);
   });
-}
+})();
 
 function saveNickname() {
   const inputValue = nicknameInput.value.trim();
@@ -299,9 +284,6 @@ function saveNickname() {
   if (inputValue && !savedNicknames.includes(inputValue)) {
     savedNicknames.push(inputValue);
     localStorage.setItem("nickname", JSON.stringify(savedNicknames));
-    const option = document.createElement("option");
-    option.value = inputValue;
-    nicknamesList.appendChild(option);
   }
 }
 
@@ -323,3 +305,8 @@ startButton.addEventListener(
   },
   { once: true }
 );
+
+//Display the slider input value on screen
+numberOfQuestionsInput.addEventListener("input", () => {
+  numberOfQuestionsInputDisplay.innerText = numberOfQuestionsInput.value;
+});
